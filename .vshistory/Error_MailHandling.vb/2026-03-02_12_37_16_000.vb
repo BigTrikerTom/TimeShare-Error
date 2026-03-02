@@ -27,7 +27,7 @@ Imports log4net.Core
 Imports Microsoft.Win32
 
 Friend Class Error_MailHandling
-    'Private Shared rb As Boolean = False
+    Private Shared rb As Boolean = False
     Public Structure MailAttachement
         Public Name As String
         Public Path As String
