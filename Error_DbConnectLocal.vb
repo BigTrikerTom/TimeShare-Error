@@ -28,164 +28,364 @@ Public Class Error_DbConnectLocal
 
 #Region "Properties"
 
-    Private Shared _user_condrop As String
-    Public Shared ReadOnly Property user_condrop() As String
-        Get
-            'Dim cCrypt As cCrypt = New cCrypt
-            Error_cCrypt.Decrypt(256, Error_VarConvert.ConvertToString(Error_Helper.RegistryReadValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database\" & Error_DbConnectLocal.DBRegFolder_ConDrop, "db_User")))
+    'Private Shared _user_condrop As String
+    'Private Shared ReadOnly Property user_condrop() As String
+    '    Get
+    '        If String.IsNullOrEmpty(_user_condrop) Then
+    '            Dim encryptedValue As String = Error_VarConvert.ConvertToString(Error_Helper.RegistryReadValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database\" & Error_DbConnectLocal.DBRegFolder_ConDrop, "db_User"))
+    '            Error_cCrypt.Decrypt(256, encryptedValue)
+    '            _user_condrop = Error_cCrypt.DecryptedString
+    '        End If
+    '        Return _user_condrop
+    '    End Get
+    'End Property
+    'Private Shared _pass_condrop As String
+    'Private Shared ReadOnly Property pass_condrop() As String
+    '    Get
+    '        'Dim cCrypt As cCrypt = New cCrypt
+    '        Error_cCrypt.Decrypt(256, Error_VarConvert.ConvertToString(Error_Helper.RegistryReadValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database\" & Error_DbConnectLocal.DBRegFolder_ConDrop, "db_Password")))
+    '        _pass_condrop = Error_cCrypt.DecryptedString
+    '        Return _pass_condrop
+    '    End Get
+    'End Property
+    'Private Shared _host_condrop As String
+    'Private Shared ReadOnly Property host_condrop() As String
+    '    Get
+    '        'Dim cCrypt As cCrypt = New cCrypt
+    '        Error_cCrypt.Decrypt(256, Error_VarConvert.ConvertToString(Error_Helper.RegistryReadValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database\" & Error_DbConnectLocal.DBRegFolder_ConDrop, "db_Host")))
+    '        _host_condrop = Error_cCrypt.DecryptedString
+    '        Return _host_condrop
+    '    End Get
+    'End Property
+    'Private Shared _db_condrop As String
+    'Private Shared ReadOnly Property db_condrop() As String
+    '    Get
+    '        'Dim cCrypt As cCrypt = New cCrypt
+    '        Error_cCrypt.Decrypt(256, Error_VarConvert.ConvertToString(Error_Helper.RegistryReadValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database\" & Error_DbConnectLocal.DBRegFolder_ConDrop, "db_Databasename")))
+    '        _db_condrop = Error_cCrypt.DecryptedString
+    '        Return _db_condrop
+    '    End Get
+    'End Property
+
+    'Private Shared _user_progen As String
+    'Private Shared ReadOnly Property user_progen() As String
+    '    Get
+    '        'Dim cCrypt As cCrypt = New cCrypt
+    '        Error_cCrypt.Decrypt(256, Error_VarConvert.ConvertToString(Error_Helper.RegistryReadValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database\" & Error_DbConnectLocal.DBRegFolder_ProGenerator, "db_User")))
+    '        _user_progen = Error_cCrypt.DecryptedString
+    '        Return _user_progen
+    '    End Get
+    'End Property
+    'Private Shared _pass_progen As String
+    'Private Shared ReadOnly Property pass_progen() As String
+    '    Get
+    '        'Dim cCrypt As cCrypt = New cCrypt
+    '        Error_cCrypt.Decrypt(256, Error_VarConvert.ConvertToString(Error_Helper.RegistryReadValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database\" & Error_DbConnectLocal.DBRegFolder_ProGenerator, "db_Password")))
+    '        _pass_progen = Error_cCrypt.DecryptedString
+    '        Return _pass_progen
+    '    End Get
+    'End Property
+    'Private Shared _host_progen As String
+    'Private Shared ReadOnly Property host_progen() As String
+    '    Get
+    '        'Dim cCrypt As cCrypt = New cCrypt
+    '        Error_cCrypt.Decrypt(256, Error_VarConvert.ConvertToString(Error_Helper.RegistryReadValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database\" & Error_DbConnectLocal.DBRegFolder_ProGenerator, "db_Host")))
+    '        _host_progen = Error_cCrypt.DecryptedString
+    '        Return _host_progen
+    '    End Get
+    'End Property
+    'Private Shared _db_progen As String
+    'Private Shared ReadOnly Property db_progen() As String
+    '    Get
+    '        'Dim cCrypt As cCrypt = New cCrypt
+    '        Error_cCrypt.Decrypt(256, Error_VarConvert.ConvertToString(Error_Helper.RegistryReadValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database\" & Error_DbConnectLocal.DBRegFolder_ProGenerator, "db_Databasename")))
+    '        _db_progen = Error_cCrypt.DecryptedString
+    '        Return _db_progen
+    '    End Get
+    'End Property
+
+    'Private Shared _user_multiserver As String
+    'Private Shared ReadOnly Property user_multiserver() As String
+    '    Get
+    '        'Dim cCrypt As cCrypt = New cCrypt
+    '        Error_cCrypt.Decrypt(256, Error_VarConvert.ConvertToString(Error_Helper.RegistryReadValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database\" & Error_DbConnectLocal.DBRegFolder_Multiserver, "db_User")))
+    '        _user_multiserver = Error_cCrypt.DecryptedString
+    '        Return _user_multiserver
+    '    End Get
+    'End Property
+    'Private Shared _pass_multiserver As String
+    'Private Shared ReadOnly Property pass_multiserver() As String
+    '    Get
+    '        'Dim cCrypt As cCrypt = New cCrypt
+    '        Error_cCrypt.Decrypt(256, Error_VarConvert.ConvertToString(Error_Helper.RegistryReadValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database\" & Error_DbConnectLocal.DBRegFolder_Multiserver, "db_Password")))
+    '        _pass_multiserver = Error_cCrypt.DecryptedString
+    '        Return _pass_multiserver
+    '    End Get
+    'End Property
+    'Private Shared _host_multiserver As String
+    'Private Shared ReadOnly Property host_multiserver() As String
+    '    Get
+    '        'Dim cCrypt As cCrypt = New cCrypt
+    '        Error_cCrypt.Decrypt(256, Error_VarConvert.ConvertToString(Error_Helper.RegistryReadValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database\" & Error_DbConnectLocal.DBRegFolder_Multiserver, "db_Host")))
+    '        _host_multiserver = Error_cCrypt.DecryptedString
+    '        Return _host_multiserver
+    '    End Get
+    'End Property
+    'Private Shared _db_multiserver As String
+    'Private Shared ReadOnly Property db_multiserver() As String
+    '    Get
+    '        'Dim cCrypt As cCrypt = New cCrypt
+    '        Error_cCrypt.Decrypt(256, Error_VarConvert.ConvertToString(Error_Helper.RegistryReadValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database\" & Error_DbConnectLocal.DBRegFolder_Multiserver, "db_Databasename")))
+    '        _db_multiserver = Error_cCrypt.DecryptedString
+    '        Return _db_multiserver
+    '    End Get
+    'End Property
+
+
+    'Private Shared _db_prefix As String
+    'Public Shared ReadOnly Property db_prefix() As String
+    '    Get
+    '        'Dim cCrypt As cCrypt = New cCrypt
+    '        Error_cCrypt.Decrypt(256, Error_VarConvert.ConvertToString(Error_Helper.RegistryReadValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database\" & Error_DbConnectLocal.DBRegFolder_ConDrop, "db_prefix")))
+    '        _db_prefix = Error_cCrypt.DecryptedString
+    '        Return _db_prefix
+    '    End Get
+    'End Property
+    'Private Shared _db_prefix_condrop As String
+    'Private Shared ReadOnly Property db_prefix_condrop() As String
+    '    Get
+    '        'Dim cCrypt As cCrypt = New cCrypt
+    '        Error_cCrypt.Decrypt(256, Error_VarConvert.ConvertToString(Error_Helper.RegistryReadValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database\" & Error_DbConnectLocal.DBRegFolder_ConDrop, "db_prefix")))
+    '        _db_prefix_condrop = Error_cCrypt.DecryptedString
+    '        Return _db_prefix_condrop
+    '    End Get
+    'End Property
+    'Private Shared _db_prefix_progen As String
+    'Private Shared ReadOnly Property db_prefix_progen() As String
+    '    Get
+    '        'Dim cCrypt As cCrypt = New cCrypt
+    '        Error_cCrypt.Decrypt(256, Error_VarConvert.ConvertToString(Error_Helper.RegistryReadValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database\" & Error_DbConnectLocal.DBRegFolder_ProGenerator, "db_prefix")))
+    '        _db_prefix_progen = Error_cCrypt.DecryptedString
+    '        If String.IsNullOrWhiteSpace(_db_prefix_progen) Then
+    '            _db_prefix_progen = "pro"
+    '        End If
+    '        Return _db_prefix_progen
+    '    End Get
+    'End Property
+    'Private Shared _db_prefix_Multiserver As String
+    'Private Shared ReadOnly Property db_prefix_Multiserver() As String
+    '    Get
+    '        'Dim cCrypt As cCrypt = New cCrypt
+    '        Error_cCrypt.Decrypt(256, Error_VarConvert.ConvertToString(Error_Helper.RegistryReadValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database\" & Error_DbConnectLocal.DBRegFolder_Multiserver, "db_prefix")))
+    '        _db_prefix_Multiserver = Error_cCrypt.DecryptedString
+    '        If String.IsNullOrWhiteSpace(_db_prefix_Multiserver) Then
+    '            _db_prefix_Multiserver = "multiserv"
+    '        End If
+    '        Return _db_prefix_Multiserver
+    '    End Get
+    'End Property
+
+    Private Shared _user_condrop As String = ""
+    Private Shared ReadOnly Property user_condrop() As String
+    Get
+        If String.IsNullOrEmpty(_user_condrop) Then
+            Dim encryptedValue As String = Error_VarConvert.ConvertToString(Error_Helper.RegistryReadValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database\" & DBRegFolder_ConDrop, "db_User"))
+            Error_cCrypt.Decrypt(256, encryptedValue)
             _user_condrop = Error_cCrypt.DecryptedString
-            Return _user_condrop
-        End Get
-    End Property
-    Private Shared _pass_condrop As String
-    Public Shared ReadOnly Property pass_condrop() As String
-        Get
-            'Dim cCrypt As cCrypt = New cCrypt
-            Error_cCrypt.Decrypt(256, Error_VarConvert.ConvertToString(Error_Helper.RegistryReadValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database\" & Error_DbConnectLocal.DBRegFolder_ConDrop, "db_Password")))
+        End If
+        Return _user_condrop
+    End Get
+End Property
+
+Private Shared _pass_condrop As String = ""
+Private Shared ReadOnly Property pass_condrop() As String
+    Get
+        If String.IsNullOrEmpty(_pass_condrop) Then
+            Dim encryptedValue As String = Error_VarConvert.ConvertToString(Error_Helper.RegistryReadValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database\" & DBRegFolder_ConDrop, "db_Password"))
+            Error_cCrypt.Decrypt(256, encryptedValue)
             _pass_condrop = Error_cCrypt.DecryptedString
-            Return _pass_condrop
-        End Get
-    End Property
-    Private Shared _host_condrop As String
-    Public Shared ReadOnly Property host_condrop() As String
-        Get
-            'Dim cCrypt As cCrypt = New cCrypt
-            Error_cCrypt.Decrypt(256, Error_VarConvert.ConvertToString(Error_Helper.RegistryReadValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database\" & Error_DbConnectLocal.DBRegFolder_ConDrop, "db_Host")))
+        End If
+        Return _pass_condrop
+    End Get
+End Property
+
+Private Shared _host_condrop As String = ""
+Private Shared ReadOnly Property host_condrop() As String
+    Get
+        If String.IsNullOrEmpty(_host_condrop) Then
+            Dim encryptedValue As String = Error_VarConvert.ConvertToString(Error_Helper.RegistryReadValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database\" & DBRegFolder_ConDrop, "db_Host"))
+            Error_cCrypt.Decrypt(256, encryptedValue)
             _host_condrop = Error_cCrypt.DecryptedString
-            Return _host_condrop
-        End Get
-    End Property
-    Private Shared _db_condrop As String
-    Public Shared ReadOnly Property db_condrop() As String
-        Get
-            'Dim cCrypt As cCrypt = New cCrypt
-            Error_cCrypt.Decrypt(256, Error_VarConvert.ConvertToString(Error_Helper.RegistryReadValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database\" & Error_DbConnectLocal.DBRegFolder_ConDrop, "db_Databasename")))
+        End If
+        Return _host_condrop
+    End Get
+End Property
+
+Private Shared _db_condrop As String = ""
+Private Shared ReadOnly Property db_condrop() As String
+    Get
+        If String.IsNullOrEmpty(_db_condrop) Then
+            Dim encryptedValue As String = Error_VarConvert.ConvertToString(Error_Helper.RegistryReadValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database\" & DBRegFolder_ConDrop, "db_Databasename"))
+            Error_cCrypt.Decrypt(256, encryptedValue)
             _db_condrop = Error_cCrypt.DecryptedString
-            Return _db_condrop
-        End Get
-    End Property
+        End If
+        Return _db_condrop
+    End Get
+End Property
 
-    Private Shared _user_progen As String
-    Public Shared ReadOnly Property user_progen() As String
-        Get
-            'Dim cCrypt As cCrypt = New cCrypt
-            Error_cCrypt.Decrypt(256, Error_VarConvert.ConvertToString(Error_Helper.RegistryReadValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database\" & Error_DbConnectLocal.DBRegFolder_ProGenerator, "db_User")))
+Private Shared _user_progen As String = ""
+Private Shared ReadOnly Property user_progen() As String
+    Get
+        If String.IsNullOrEmpty(_user_progen) Then
+            Dim encryptedValue As String = Error_VarConvert.ConvertToString(Error_Helper.RegistryReadValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database\" & DBRegFolder_ProGenerator, "db_User"))
+            Error_cCrypt.Decrypt(256, encryptedValue)
             _user_progen = Error_cCrypt.DecryptedString
-            Return _user_progen
-        End Get
-    End Property
-    Private Shared _pass_progen As String
-    Public Shared ReadOnly Property pass_progen() As String
-        Get
-            'Dim cCrypt As cCrypt = New cCrypt
-            Error_cCrypt.Decrypt(256, Error_VarConvert.ConvertToString(Error_Helper.RegistryReadValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database\" & Error_DbConnectLocal.DBRegFolder_ProGenerator, "db_Password")))
+        End If
+        Return _user_progen
+    End Get
+End Property
+
+Private Shared _pass_progen As String = ""
+Private Shared ReadOnly Property pass_progen() As String
+    Get
+        If String.IsNullOrEmpty(_pass_progen) Then
+            Dim encryptedValue As String = Error_VarConvert.ConvertToString(Error_Helper.RegistryReadValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database\" & DBRegFolder_ProGenerator, "db_Password"))
+            Error_cCrypt.Decrypt(256, encryptedValue)
             _pass_progen = Error_cCrypt.DecryptedString
-            Return _pass_progen
-        End Get
-    End Property
-    Private Shared _host_progen As String
-    Public Shared ReadOnly Property host_progen() As String
-        Get
-            'Dim cCrypt As cCrypt = New cCrypt
-            Error_cCrypt.Decrypt(256, Error_VarConvert.ConvertToString(Error_Helper.RegistryReadValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database\" & Error_DbConnectLocal.DBRegFolder_ProGenerator, "db_Host")))
+        End If
+        Return _pass_progen
+    End Get
+End Property
+
+Private Shared _host_progen As String = ""
+Private Shared ReadOnly Property host_progen() As String
+    Get
+        If String.IsNullOrEmpty(_host_progen) Then
+            Dim encryptedValue As String = Error_VarConvert.ConvertToString(Error_Helper.RegistryReadValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database\" & DBRegFolder_ProGenerator, "db_Host"))
+            Error_cCrypt.Decrypt(256, encryptedValue)
             _host_progen = Error_cCrypt.DecryptedString
-            Return _host_progen
-        End Get
-    End Property
-    Private Shared _db_progen As String
-    Public Shared ReadOnly Property db_progen() As String
-        Get
-            'Dim cCrypt As cCrypt = New cCrypt
-            Error_cCrypt.Decrypt(256, Error_VarConvert.ConvertToString(Error_Helper.RegistryReadValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database\" & Error_DbConnectLocal.DBRegFolder_ProGenerator, "db_Databasename")))
+        End If
+        Return _host_progen
+    End Get
+End Property
+
+Private Shared _db_progen As String = ""
+Private Shared ReadOnly Property db_progen() As String
+    Get
+        If String.IsNullOrEmpty(_db_progen) Then
+            Dim encryptedValue As String = Error_VarConvert.ConvertToString(Error_Helper.RegistryReadValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database\" & DBRegFolder_ProGenerator, "db_Databasename"))
+            Error_cCrypt.Decrypt(256, encryptedValue)
             _db_progen = Error_cCrypt.DecryptedString
-            Return _db_progen
-        End Get
-    End Property
+        End If
+        Return _db_progen
+    End Get
+End Property
 
-    Private Shared _user_multiserver As String
-    Public Shared ReadOnly Property user_multiserver() As String
-        Get
-            'Dim cCrypt As cCrypt = New cCrypt
-            Error_cCrypt.Decrypt(256, Error_VarConvert.ConvertToString(Error_Helper.RegistryReadValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database\" & Error_DbConnectLocal.DBRegFolder_Multiserver, "db_User")))
+Private Shared _user_multiserver As String = ""
+Private Shared ReadOnly Property user_multiserver() As String
+    Get
+        If String.IsNullOrEmpty(_user_multiserver) Then
+            Dim encryptedValue As String = Error_VarConvert.ConvertToString(Error_Helper.RegistryReadValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database\" & DBRegFolder_Multiserver, "db_User"))
+            Error_cCrypt.Decrypt(256, encryptedValue)
             _user_multiserver = Error_cCrypt.DecryptedString
-            Return _user_multiserver
-        End Get
-    End Property
-    Private Shared _pass_multiserver As String
-    Public Shared ReadOnly Property pass_multiserver() As String
-        Get
-            'Dim cCrypt As cCrypt = New cCrypt
-            Error_cCrypt.Decrypt(256, Error_VarConvert.ConvertToString(Error_Helper.RegistryReadValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database\" & Error_DbConnectLocal.DBRegFolder_Multiserver, "db_Password")))
+        End If
+        Return _user_multiserver
+    End Get
+End Property
+
+Private Shared _pass_multiserver As String = ""
+Private Shared ReadOnly Property pass_multiserver() As String
+    Get
+        If String.IsNullOrEmpty(_pass_multiserver) Then
+            Dim encryptedValue As String = Error_VarConvert.ConvertToString(Error_Helper.RegistryReadValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database\" & DBRegFolder_Multiserver, "db_Password"))
+            Error_cCrypt.Decrypt(256, encryptedValue)
             _pass_multiserver = Error_cCrypt.DecryptedString
-            Return _pass_multiserver
-        End Get
-    End Property
-    Private Shared _host_multiserver As String
-    Public Shared ReadOnly Property host_multiserver() As String
-        Get
-            'Dim cCrypt As cCrypt = New cCrypt
-            Error_cCrypt.Decrypt(256, Error_VarConvert.ConvertToString(Error_Helper.RegistryReadValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database\" & Error_DbConnectLocal.DBRegFolder_Multiserver, "db_Host")))
+        End If
+        Return _pass_multiserver
+    End Get
+End Property
+
+Private Shared _host_multiserver As String = ""
+Private Shared ReadOnly Property host_multiserver() As String
+    Get
+        If String.IsNullOrEmpty(_host_multiserver) Then
+            Dim encryptedValue As String = Error_VarConvert.ConvertToString(Error_Helper.RegistryReadValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database\" & DBRegFolder_Multiserver, "db_Host"))
+            Error_cCrypt.Decrypt(256, encryptedValue)
             _host_multiserver = Error_cCrypt.DecryptedString
-            Return _host_multiserver
-        End Get
-    End Property
-    Private Shared _db_multiserver As String
-    Public Shared ReadOnly Property db_multiserver() As String
-        Get
-            'Dim cCrypt As cCrypt = New cCrypt
-            Error_cCrypt.Decrypt(256, Error_VarConvert.ConvertToString(Error_Helper.RegistryReadValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database\" & Error_DbConnectLocal.DBRegFolder_Multiserver, "db_Databasename")))
+        End If
+        Return _host_multiserver
+    End Get
+End Property
+
+Private Shared _db_multiserver As String = ""
+Private Shared ReadOnly Property db_multiserver() As String
+    Get
+        If String.IsNullOrEmpty(_db_multiserver) Then
+            Dim encryptedValue As String = Error_VarConvert.ConvertToString(Error_Helper.RegistryReadValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database\" & DBRegFolder_Multiserver, "db_Databasename"))
+            Error_cCrypt.Decrypt(256, encryptedValue)
             _db_multiserver = Error_cCrypt.DecryptedString
-            Return _db_multiserver
-        End Get
-    End Property
+        End If
+        Return _db_multiserver
+    End Get
+End Property
 
-
-    Private Shared _db_prefix As String
+Private Shared _db_prefix As String = ""
     Public Shared ReadOnly Property db_prefix() As String
         Get
-            'Dim cCrypt As cCrypt = New cCrypt
-            Error_cCrypt.Decrypt(256, Error_VarConvert.ConvertToString(Error_Helper.RegistryReadValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database\" & Error_DbConnectLocal.DBRegFolder_ConDrop, "db_prefix")))
-            _db_prefix = Error_cCrypt.DecryptedString
+            If String.IsNullOrEmpty(_db_prefix) Then
+                Dim encryptedValue As String = Error_VarConvert.ConvertToString(Error_Helper.RegistryReadValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database\" & DBRegFolder_ConDrop, "db_prefix"))
+                Error_cCrypt.Decrypt(256, encryptedValue)
+                _db_prefix = Error_cCrypt.DecryptedString
+            End If
             Return _db_prefix
         End Get
     End Property
-    Private Shared _db_prefix_condrop As String
-    Public Shared ReadOnly Property db_prefix_condrop() As String
+
+    Private Shared _db_prefix_condrop As String = ""
+    Private Shared ReadOnly Property db_prefix_condrop() As String
         Get
-            'Dim cCrypt As cCrypt = New cCrypt
-            Error_cCrypt.Decrypt(256, Error_VarConvert.ConvertToString(Error_Helper.RegistryReadValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database\" & Error_DbConnectLocal.DBRegFolder_ConDrop, "db_prefix")))
-            _db_prefix_condrop = Error_cCrypt.DecryptedString
+            If String.IsNullOrEmpty(_db_prefix_condrop) Then
+                Dim encryptedValue As String = Error_VarConvert.ConvertToString(Error_Helper.RegistryReadValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database\" & Error_DbConnectLocal.DBRegFolder_ConDrop, "db_prefix"))
+                Error_cCrypt.Decrypt(256, encryptedValue)
+                _db_prefix_condrop = Error_cCrypt.DecryptedString
+            End If
             Return _db_prefix_condrop
         End Get
     End Property
-    Private Shared _db_prefix_progen As String
-    Public Shared ReadOnly Property db_prefix_progen() As String
+    Private Shared _db_prefix_progen As String = ""
+    Private Shared ReadOnly Property db_prefix_progen() As String
         Get
-            'Dim cCrypt As cCrypt = New cCrypt
-            Error_cCrypt.Decrypt(256, Error_VarConvert.ConvertToString(Error_Helper.RegistryReadValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database\" & Error_DbConnectLocal.DBRegFolder_ProGenerator, "db_prefix")))
-            _db_prefix_progen = Error_cCrypt.DecryptedString
-            If String.IsNullOrWhiteSpace(_db_prefix_progen) Then
-                _db_prefix_progen = "pro"
+            If String.IsNullOrEmpty(_db_prefix_progen) Then
+                Dim encryptedValue As String = Error_VarConvert.ConvertToString(Error_Helper.RegistryReadValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database\" & Error_DbConnectLocal.DBRegFolder_ProGenerator, "db_prefix"))
+                Error_cCrypt.Decrypt(256, encryptedValue)
+                _db_prefix_progen = Error_cCrypt.DecryptedString
+                If String.IsNullOrWhiteSpace(_db_prefix_progen) Then
+                    _db_prefix_progen = "pro"
+                End If
             End If
             Return _db_prefix_progen
         End Get
     End Property
-    Private Shared _db_prefix_Multiserver As String
-    Public Shared ReadOnly Property db_prefix_Multiserver() As String
+    Private Shared _db_prefix_Multiserver As String = ""
+    Private Shared ReadOnly Property db_prefix_Multiserver() As String
         Get
-            'Dim cCrypt As cCrypt = New cCrypt
-            Error_cCrypt.Decrypt(256, Error_VarConvert.ConvertToString(Error_Helper.RegistryReadValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database\" & Error_DbConnectLocal.DBRegFolder_Multiserver, "db_prefix")))
-            _db_prefix_Multiserver = Error_cCrypt.DecryptedString
-            If String.IsNullOrWhiteSpace(_db_prefix_Multiserver) Then
-                _db_prefix_Multiserver = "multiserv"
+            If String.IsNullOrEmpty(_db_prefix_Multiserver) Then
+                Dim encryptedValue As String = Error_VarConvert.ConvertToString(Error_Helper.RegistryReadValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database\" & Error_DbConnectLocal.DBRegFolder_Multiserver, "db_prefix"))
+                Error_cCrypt.Decrypt(256, encryptedValue)
+                _db_prefix_Multiserver = Error_cCrypt.DecryptedString
+                If String.IsNullOrWhiteSpace(_db_prefix_Multiserver) Then
+                    _db_prefix_Multiserver = "multiserv"
+                End If
             End If
             Return _db_prefix_Multiserver
         End Get
     End Property
 
+
 #End Region
 
 #Region "Definitions"
+
 
     Private Structure ConnStringDef
         Friend MySqlConString As String
@@ -317,34 +517,29 @@ Public Class Error_DbConnectLocal
 
 
     Private Shared Sub GetDBValues()
-        Dim rbrwv As Boolean = False
 
         Try
             DBRegFolder_ConDrop = Error_VarConvert.ConvertToString(Error_Helper.RegistryReadValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database", "DBRegFolder_ConDrop"))
             DBRegFolder_ProGenerator = Error_VarConvert.ConvertToString(Error_Helper.RegistryReadValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database", "DBRegFolder_ProGenerator"))
             DBRegFolder_Multiserver = Error_VarConvert.ConvertToString(Error_Helper.RegistryReadValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database", "DBRegFolder_Multiserver"))
-            If IsNothing(DBRegFolder_ConDrop) OrElse DBRegFolder_ConDrop = "" Then
+            If String.IsNullOrEmpty(DBRegFolder_ConDrop) Then
                 DBRegFolder_ConDrop = "ConDrop"
-                rbrwv = Error_Helper.RegistryWriteValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database", "DBRegFolder_ConDrop", DBRegFolder_ConDrop)
+                Error_Helper.RegistryWriteValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database", "DBRegFolder_ConDrop", DBRegFolder_ConDrop)
             End If
-            If IsNothing(DBRegFolder_ProGenerator) OrElse DBRegFolder_ProGenerator = "" Then
+            If String.IsNullOrEmpty(DBRegFolder_ProGenerator) Then
                 DBRegFolder_ProGenerator = "Progenerator"
-                rbrwv = Error_Helper.RegistryWriteValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database", "DBRegFolder_ProGenerator", DBRegFolder_ProGenerator)
+                Error_Helper.RegistryWriteValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database", "DBRegFolder_ProGenerator", DBRegFolder_ProGenerator)
             End If
             If String.IsNullOrEmpty(DBRegFolder_Multiserver) Then
                 DBRegFolder_Multiserver = "Multiserver"
-                rbrwv = Error_Helper.RegistryWriteValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database", "DBRegFolder_Multiserver", DBRegFolder_Multiserver)
+                Error_Helper.RegistryWriteValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database", "DBRegFolder_Multiserver", DBRegFolder_Multiserver)
             End If
 
             MySqlCommandText = "set net_write_timeout=31536000; set net_read_timeout=31536000; UseCompression=True;"
-            'MySqlCommandText = "set net_write_timeout=31536000; set net_read_timeout=31536000; UseCompression=True;SslMode=none;"
-            Dim ConnectStringAddOn As String = ""
-            ConnectStringAddOn = "ConvertZeroDatetime=True; UseCompression=True; default command timeout=60; Allow User Variables=true; pooling=true; persistsecurityinfo=True;"
-            'ConnectStringAddOn = "ConvertZeroDatetime=True; UseCompression=True; default command timeout=60; Allow User Variables=true; pooling=true; persistsecurityinfo=True;SslMode=none;"
+            Dim ConnectStringAddOn As String =  "ConvertZeroDatetime=True; UseCompression=True; default command timeout=60; Allow User Variables=true; pooling=true; persistsecurityinfo=True;"
             ConDropConnectionString = "Server=" & host_condrop & "; UID=" & user_condrop & "; Password=" & pass_condrop & "; Database=" & db_condrop & ";" & ConnectStringAddOn
             ProgenConnectionString = "Server=" & host_progen & "; UID=" & user_progen & "; Password=" & pass_progen & "; Database=" & db_progen & ";" & ConnectStringAddOn
             MultiserverConnectionString = "Server=" & host_multiserver & "; UID=" & user_multiserver & "; Password=" & pass_multiserver & "; Database=" & db_multiserver & ";" & ConnectStringAddOn
-            'UpdateConnectionString = "Server=" & clsMain.host_upd & "; UID=" & clsMain.user_upd & "; Password=" & clsMain.pass_upd & "; Database=" & clsMain.db_upd & ";" & ConnectStringAddOn
 
             Dim DBQueryTimeOut As String = Error_Helper.RegistryReadValue(Error_Helper.RegistryHiveValue, Error_Helper.RegistryPath & "\Database", "DBQueryTimeOut").ToString
             If String.IsNullOrEmpty(DBQueryTimeOut) Then
@@ -374,86 +569,86 @@ Public Class Error_DbConnectLocal
             clsMain.IsMultiserverEnabled = rb3
 
             '? Tabellen der ConDrop-DB
-            db_table_condrop_return_tracking = db_prefix_condrop & "_return_tracking"
-            db_table_condrop_Settings = db_prefix_condrop & "_settings"
-            db_table_condrop_Absender = db_prefix_condrop & "_absender"
-            db_table_condrop_Absender_Shipping = db_prefix_condrop & "_absender_shipping"
-            db_table_condrop_blocked_alignment = db_prefix_condrop & "_blocked_alignment"
-            db_table_condrop_country = db_prefix_condrop & "_country"
-            db_table_condrop_country_states = db_prefix_condrop & "_country_states"
-            db_table_condrop_easylog_tracking = db_prefix_condrop & "_easylog_tracking"
-            db_table_condrop_email = db_prefix_condrop & "_email"
-            db_table_condrop_email_attachements = db_prefix_condrop & "_email_attachements"
-            db_table_condrop_email_folder = db_prefix_condrop & "_email_folder"
-            db_table_condrop_email_placeholder = db_prefix_condrop & "_email_placeholder"
-            db_table_condrop_email_rules = db_prefix_condrop & "_email_rules"
-            db_table_condrop_email_templates = db_prefix_condrop & "_email_templates"
-            db_table_condrop_history = db_prefix_condrop & "_order_history"
-            db_table_condrop_Logs = db_prefix_condrop & "_logs"
-            db_table_condrop_msg = db_prefix_condrop & "_msg"
-            db_table_condrop_order_incomming = db_prefix_condrop & "_order_incomming"
-            db_table_condrop_Origin = db_prefix_condrop & "_origin"
-            db_table_condrop_Platforms = db_prefix_condrop & "_platforms"
-            db_table_condrop_retoure = db_prefix_condrop & "_retoure"
-            db_table_condrop_return_classification = db_prefix_condrop & "_return_classification"
-            db_table_condrop_saved_addresses = db_prefix_condrop & "_saved_addresses"
-            db_table_condrop_shipping_label = db_prefix_condrop & "_shipping_label"
-            db_table_condrop_shipping_scans = db_prefix_condrop & "_shipping_scans"
-            db_table_condrop_order_shipping = db_prefix_condrop & "_order_shipping"
-            db_table_condrop_statistics = db_prefix_condrop & "_statistics"
-            db_table_condrop_stock_article = db_prefix_condrop & "_stock_article"
-            db_table_condrop_ebay_buyer = db_prefix_condrop & "_eBayBuyer"
-            db_table_condrop_plentysalesorderreferrer = db_prefix_condrop & "_plentysalesorderreferrer"
-            db_table_condrop_import_prodws = db_prefix_condrop & "_prodws_import"
-            db_table_condrop_prodws = db_prefix_condrop & "_prodws"
-            db_table_condrop_prodws_active = db_prefix_condrop & "_prodws_active"
-            db_table_condrop_Absender_Internetmarke = db_prefix_condrop & "_absender_internetmarke"
-            db_table_condrop_email_placeholder_exclude = db_prefix_condrop & "_email_placeholder_exclude"
-            db_table_condrop_storage_def = db_prefix_condrop & "_storage_def"
-            db_table_condrop_order_primelabel = db_prefix_condrop & "_order_primelabel"
-            db_table_condrop_AmazonMws = db_prefix_condrop & "_AmazonMWS"
-            db_table_condrop_lastupdated_cache = db_prefix_condrop & "_lastupdated_cache"
+            db_table_condrop_return_tracking = String.Concat(db_prefix_condrop, "_return_tracking")
+            db_table_condrop_Settings = String.Concat(db_prefix_condrop, "_settings")
+            db_table_condrop_Absender = String.Concat(db_prefix_condrop, "_absender")
+            db_table_condrop_Absender_Shipping = String.Concat(db_prefix_condrop, "_absender_shipping")
+            db_table_condrop_blocked_alignment = String.Concat(db_prefix_condrop, "_blocked_alignment")
+            db_table_condrop_country = String.Concat(db_prefix_condrop, "_country")
+            db_table_condrop_country_states = String.Concat(db_prefix_condrop, "_country_states")
+            db_table_condrop_easylog_tracking = String.Concat(db_prefix_condrop, "_easylog_tracking")
+            db_table_condrop_email = String.Concat(db_prefix_condrop, "_email")
+            db_table_condrop_email_attachements = String.Concat(db_prefix_condrop, "_email_attachements")
+            db_table_condrop_email_folder = String.Concat(db_prefix_condrop, "_email_folder")
+            db_table_condrop_email_placeholder = String.Concat(db_prefix_condrop, "_email_placeholder")
+            db_table_condrop_email_rules = String.Concat(db_prefix_condrop, "_email_rules")
+            db_table_condrop_email_templates = String.Concat(db_prefix_condrop, "_email_templates")
+            db_table_condrop_history = String.Concat(db_prefix_condrop, "_order_history")
+            db_table_condrop_Logs = String.Concat(db_prefix_condrop, "_logs")
+            db_table_condrop_msg = String.Concat(db_prefix_condrop, "_msg")
+            db_table_condrop_order_incomming = String.Concat(db_prefix_condrop, "_order_incomming")
+            db_table_condrop_Origin = String.Concat(db_prefix_condrop, "_origin")
+            db_table_condrop_Platforms = String.Concat(db_prefix_condrop, "_platforms")
+            db_table_condrop_retoure = String.Concat(db_prefix_condrop, "_retoure")
+            db_table_condrop_return_classification = String.Concat(db_prefix_condrop, "_return_classification")
+            db_table_condrop_saved_addresses = String.Concat(db_prefix_condrop, "_saved_addresses")
+            db_table_condrop_shipping_label = String.Concat(db_prefix_condrop, "_shipping_label")
+            db_table_condrop_shipping_scans = String.Concat(db_prefix_condrop, "_shipping_scans")
+            db_table_condrop_order_shipping = String.Concat(db_prefix_condrop, "_order_shipping")
+            db_table_condrop_statistics = String.Concat(db_prefix_condrop, "_statistics")
+            db_table_condrop_stock_article = String.Concat(db_prefix_condrop, "_stock_article")
+            db_table_condrop_ebay_buyer = String.Concat(db_prefix_condrop, "_eBayBuyer")
+            db_table_condrop_plentysalesorderreferrer = String.Concat(db_prefix_condrop, "_plentysalesorderreferrer")
+            db_table_condrop_import_prodws = String.Concat(db_prefix_condrop, "_prodws_import")
+            db_table_condrop_prodws = String.Concat(db_prefix_condrop, "_prodws")
+            db_table_condrop_prodws_active = String.Concat(db_prefix_condrop, "_prodws_active")
+            db_table_condrop_Absender_Internetmarke = String.Concat(db_prefix_condrop, "_absender_internetmarke")
+            db_table_condrop_email_placeholder_exclude = String.Concat(db_prefix_condrop, "_email_placeholder_exclude")
+            db_table_condrop_storage_def = String.Concat(db_prefix_condrop, "_storage_def")
+            db_table_condrop_order_primelabel = String.Concat(db_prefix_condrop, "_order_primelabel")
+            db_table_condrop_AmazonMws = String.Concat(db_prefix_condrop, "_AmazonMWS")
+            db_table_condrop_lastupdated_cache = String.Concat(db_prefix_condrop, "_lastupdated_cache")
 
             '? Tabellen der Progen-DB
-            db_table_ean = db_prefix_progen & "_ean"
-            db_table_export = db_prefix_progen & "_export"
-            db_table_progen_Absender = db_prefix_progen & "_absender"
-            db_table_progen_colors = db_prefix_progen & "_colors"
-            db_table_progen_groups = db_prefix_progen & "_groups"
-            db_table_progen_products_groups = db_prefix_progen & "_products_groups"
-            db_table_progen_Prices = db_prefix_progen & "_products_prices"
-            db_table_progen_products = db_prefix_progen & "_products"
-            db_table_progen_user_groups = db_prefix_progen & "_groups"
-            db_table_progen_user = db_prefix_progen & "_user"
+            db_table_ean = String.Concat(db_prefix_progen, "_ean")
+            db_table_export = String.Concat(db_prefix_progen, "_export")
+            db_table_progen_Absender = String.Concat(db_prefix_progen, "_absender")
+            db_table_progen_colors = String.Concat(db_prefix_progen, "_colors")
+            db_table_progen_groups = String.Concat(db_prefix_progen, "_groups")
+            db_table_progen_products_groups = String.Concat(db_prefix_progen, "_products_groups")
+            db_table_progen_Prices = String.Concat(db_prefix_progen, "_products_prices")
+            db_table_progen_products = String.Concat(db_prefix_progen, "_products")
+            db_table_progen_user_groups = String.Concat(db_prefix_progen, "_groups")
+            db_table_progen_user = String.Concat(db_prefix_progen, "_user")
 
             '? Tabellen der Progen/ConDrop-DB
-            db_table_progen_condrop_amazon_flatfiles = db_prefix_progen & "_condrop_amazon_flatfiles"
-            db_table_progen_condrop_amazon_flatfiles_default = db_prefix_progen & "_condrop_amazon_flatfiles_default"
-            db_table_progen_condrop_amazon_subgroups_flatfiles = db_prefix_progen & "_condrop_amazon_subgroups_flatfiles"
-            db_table_progen_condrop_amazon_subgroups_flatfiles_values = db_prefix_progen & "_condrop_amazon_subgroups_flatfiles_values"
-            db_table_progen_condrop_amazon_validvalues = db_prefix_progen & "_condrop_amazon_valid_values"
-            db_table_progen_condrop_csv_flatfiles = db_prefix_progen & "_condrop_csv_flatfiles"
-            db_table_progen_condrop_csv_flatfiles_default = db_prefix_progen & "_condrop_csv_flatfiles_default"
-            db_table_progen_condrop_ebay_categories = db_prefix_progen & "_condrop_ebay_categories"
-            db_table_progen_condrop_ebay_flatfiles = db_prefix_progen & "_condrop_ebay_flatfiles"
-            db_table_progen_condrop_ebay_flatfiles_default = db_prefix_progen & "_condrop_ebay_flatfiles_default"
-            db_table_progen_condrop_motive_manufacturer = db_prefix_progen & "_condrop_motive_manufacturer"
-            db_table_progen_condrop_plenty_flatfiles = db_prefix_progen & "_condrop_plenty_flatfiles"
-            db_table_progen_condrop_plenty_flatfiles_default = db_prefix_progen & "_condrop_plenty_flatfiles_default"
-            db_table_progen_condrop_products_groups = db_prefix_progen & "_condrop_products_groups"
-            db_table_progen_condrop_products_master = db_prefix_progen & "_condrop_products_master"
-            db_table_progen_condrop_products_master_groups = db_prefix_progen & "_condrop_products_master_groups"
-            db_table_progen_condrop_products_master_subgroups = db_prefix_progen & "_condrop_products_master_subgroups"
-            db_table_progen_condrop_products_prices = db_prefix_progen & "_condrop_products_prices"
-            db_table_progen_condrop_products_subgroups = db_prefix_progen & "_condrop_products_subgroups"
-            db_table_progen_condrop_products_subgroups_prices = db_prefix_progen & "_condrop_products_subgroups_prices"
-            db_table_progen_condrop_size_groups = db_prefix_progen & "_condrop_size_groups"
+            db_table_progen_condrop_amazon_flatfiles = String.Concat(db_prefix_progen, "_condrop_amazon_flatfiles")
+            db_table_progen_condrop_amazon_flatfiles_default = String.Concat(db_prefix_progen, "_condrop_amazon_flatfiles_default")
+            db_table_progen_condrop_amazon_subgroups_flatfiles = String.Concat(db_prefix_progen, "_condrop_amazon_subgroups_flatfiles")
+            db_table_progen_condrop_amazon_subgroups_flatfiles_values = String.Concat(db_prefix_progen, "_condrop_amazon_subgroups_flatfiles_values")
+            db_table_progen_condrop_amazon_validvalues = String.Concat(db_prefix_progen, "_condrop_amazon_valid_values")
+            db_table_progen_condrop_csv_flatfiles = String.Concat(db_prefix_progen, "_condrop_csv_flatfiles")
+            db_table_progen_condrop_csv_flatfiles_default = String.Concat(db_prefix_progen, "_condrop_csv_flatfiles_default")
+            db_table_progen_condrop_ebay_categories = String.Concat(db_prefix_progen, "_condrop_ebay_categories")
+            db_table_progen_condrop_ebay_flatfiles = String.Concat(db_prefix_progen, "_condrop_ebay_flatfiles")
+            db_table_progen_condrop_ebay_flatfiles_default = String.Concat(db_prefix_progen, "_condrop_ebay_flatfiles_default")
+            db_table_progen_condrop_motive_manufacturer = String.Concat(db_prefix_progen, "_condrop_motive_manufacturer")
+            db_table_progen_condrop_plenty_flatfiles = String.Concat(db_prefix_progen, "_condrop_plenty_flatfiles")
+            db_table_progen_condrop_plenty_flatfiles_default = String.Concat(db_prefix_progen, "_condrop_plenty_flatfiles_default")
+            db_table_progen_condrop_products_groups = String.Concat(db_prefix_progen, "_condrop_products_groups")
+            db_table_progen_condrop_products_master = String.Concat(db_prefix_progen, "_condrop_products_master")
+            db_table_progen_condrop_products_master_groups = String.Concat(db_prefix_progen, "_condrop_products_master_groups")
+            db_table_progen_condrop_products_master_subgroups = String.Concat(db_prefix_progen, "_condrop_products_master_subgroups")
+            db_table_progen_condrop_products_prices = String.Concat(db_prefix_progen, "_condrop_products_prices")
+            db_table_progen_condrop_products_subgroups = String.Concat(db_prefix_progen, "_condrop_products_subgroups")
+            db_table_progen_condrop_products_subgroups_prices = String.Concat(db_prefix_progen, "_condrop_products_subgroups_prices")
+            db_table_progen_condrop_size_groups = String.Concat(db_prefix_progen, "_condrop_size_groups")
 
             '? Tabellen der Multiserver-DB
-            db_table_multiserver_known_server = db_prefix_Multiserver & "_known_server"
-            db_table_multiserver_order_incomming = db_prefix_Multiserver & "_order_incomming"
-            db_table_multiserver_order_transfer = db_prefix_Multiserver & "_order_transfer"
-            db_table_multiserver_products_base = db_prefix_Multiserver & "_products_"
+            db_table_multiserver_known_server = String.Concat(db_prefix_Multiserver, "_known_server")
+            db_table_multiserver_order_incomming = String.Concat(db_prefix_Multiserver, "_order_incomming")
+            db_table_multiserver_order_transfer = String.Concat(db_prefix_Multiserver, "_order_transfer")
+            db_table_multiserver_products_base = String.Concat(db_prefix_Multiserver, "_products_")
 
             '? Tabellen der Updater-DB
             db_table_updates = "updates"
